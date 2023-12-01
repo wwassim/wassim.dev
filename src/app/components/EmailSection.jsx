@@ -6,29 +6,26 @@ import Link from "next/link";
 import Image from "next/image";
 Image;
 const EmailSection = () => {
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
   const [emailSubmitted, setEmailSubmitted] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = {
-      email: e.target.email.value,
-      subject: e.target.subject.value,
-      message: e.target.message.value,
-    };
-    const JSONdata = JSON.stringify(data);
-    const endpoint = "/api/send";
-    // Form the request for sending data to the server.
-    const options = {
-      // The method is POST because we are sending data.
+
+    const response = await fetch("/api/sendEmail", {
       method: "POST",
-      // Tell the server we're sending JSON.
       headers: {
-        "Content-Type": "application/json",
+        "content-type": "application/json",
       },
-      // Body of the request is the JSON data we created above.
-      body: JSONdata,
-    };
-    const response = await fetcg(endpoint, options);
-    const resData = await response.json();
+      body: JSON.stringify({
+        email,
+        subject,
+        message,
+      }),
+    });
+    console.log(await response.json());
 
     if (response.status === 200) {
       console.log("Message sent.");
@@ -36,7 +33,10 @@ const EmailSection = () => {
     }
   };
   return (
-    <section className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative">
+    <section
+      id="contact"
+      className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative"
+    >
       <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
       <div className="z-10">
         <h5 className="text-xl font-bold text-white my-2">lets connect</h5>
@@ -68,6 +68,10 @@ const EmailSection = () => {
               name="email"
               type="email"
               id="email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               required
               className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
               placeholder="jacob@google.com"
@@ -84,6 +88,10 @@ const EmailSection = () => {
               name="subject"
               type="text"
               id="subject"
+              value={subject}
+              onChange={(e) => {
+                setSubject(e.target.value);
+              }}
               required
               className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
               placeholder="Just saying hi"
@@ -99,6 +107,10 @@ const EmailSection = () => {
             <textarea
               name="message"
               id="message"
+              value={message}
+              onChange={(e) => {
+                setMessage(e.target.value);
+              }}
               className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
               placeholder="Let's talk about..."
             />

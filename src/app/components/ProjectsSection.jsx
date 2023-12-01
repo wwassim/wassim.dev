@@ -28,6 +28,15 @@ const projects = [
     github: "https://github.com/wassim-stack/cars_showcase",
     link: "https://cars-showcase-gray.vercel.app/",
   },
+  {
+    id: 4,
+    name: "Portfolio",
+    description:
+      "Developer Portfolio made with Next JS Framer Motion and JavaScript.",
+    image: "/projects/porto.png",
+    github: "https://github.com/wassim-stack/portfolio",
+    link: "https://portofilio-rho.vercel.app/",
+  },
 ];
 const ProjectsSection = () => {
   const ref = useRef(null);
@@ -37,7 +46,7 @@ const ProjectsSection = () => {
     animate: { y: 0, opacity: 1 },
   };
   return (
-    <section>
+    <section id="projects">
       <h2 className="text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12">
         My Projects
       </h2>
