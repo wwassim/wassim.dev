@@ -32,10 +32,6 @@ const HeaderSection = () => {
             />
           </h1>
 
-          <p className="text-[#ADB7BE] text-base sm:text-lg lg:text-xl mb-4">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur
-            molestias quis in voluptatibus quidem.
-          </p>
           <div className="">
             <Link href={"#contact"}>
               <button className="px-6 py-3 w-full sm:w-fit rounded-full mr-4 bg-gradient-to-br from-blue-500 to-blue-600 text-white hover:bg-slate-200 ">
