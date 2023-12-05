@@ -5,43 +5,46 @@ import TabButton from "./TabButton";
 
 const TAB_DATA = [
   {
-    title: "Skills",
-    id: "skills",
-    content: (
-      <ul className="list-disc pl-2">
-        <li>Node.js</li>
-        <li>Express</li>
-        <li>PostgreSQL</li>
-        <li>Sequelize</li>
-        <li>JavaScript</li>
-        <li>React</li>
-      </ul>
-    ),
-  },
-  {
     title: "Education",
     id: "education",
     content: (
       <ul className="list-disc pl-2">
-        <li>Fullstack Academy of Code</li>
-        <li>University of California, Santa Cruz</li>
+        <li>Master.Software Engineering ISI , ARIANA</li>
+        <li>Bachelor degree DSI ISET ,KELIBIA</li>
       </ul>
     ),
   },
   {
-    title: "Certifications",
-    id: "certifications",
+    title: "Skills",
+    id: "skills",
     content: (
       <ul className="list-disc pl-2">
-        <li>AWS Cloud Practitioner</li>
-        <li>Google Professional Cloud Developer</li>
+        <li>Node.JS</li>
+        <li>Express</li>
+        <li>PostgreSQL</li>
+        <li>MongoDB</li>
+        <li>Toolkit</li>
+        <li>JavaScript</li>
+        <li>React.JS</li>
+        <li>Next.JS</li>
       </ul>
     ),
   },
+
+  // {
+  //   title: "Certifications",
+  //   id: "certifications",
+  //   content: (
+  //     <ul className="list-disc pl-2">
+  //       <li>AWS Cloud Practitioner</li>
+  //       <li>Google Professional Cloud Developer</li>
+  //     </ul>
+  //   ),
+  // },
 ];
 
 const AboutSection = () => {
-  const [tab, setTab] = useState("skills");
+  const [tab, setTab] = useState("education");
   const [isPending, startTransition] = useTransition();
   const handleTabChange = (id) => {
     startTransition(() => {
@@ -57,19 +60,13 @@ const AboutSection = () => {
           <p className="text-base lg:text-lg">
             I am a full stack web developer with a passion for creating
             interactive and responsive web applications. I have experience
-            working with JavaScript, React, Redux, Node.js, Express, PostgreSQL,
-            Sequelize, HTML, CSS, and Git. I am a quick learner and I am always
-            looking to expand my knowledge and skill set. I am a team player and
-            I am excited to work with others to create amazing applications.
+            working with JavaScript, React,Next.js, Redux, Node.js, Express,
+            PostgreSQL, MonogoDB, HTML, CSS, and Git. I am a quick learner and I
+            am always looking to expand my knowledge and skill set. I am a team
+            player and I am excited to work with others to create amazing
+            applications.
           </p>
           <div className="flex flex-row mt-8">
-            <TabButton
-              selectTab={() => handleTabChange("skills")}
-              active={tab === "skills"}
-            >
-              {""}
-              Skills{""}
-            </TabButton>
             <TabButton
               selectTab={() => handleTabChange("education")}
               active={tab === "education"}
@@ -78,12 +75,20 @@ const AboutSection = () => {
               education{""}
             </TabButton>
             <TabButton
+              selectTab={() => handleTabChange("skills")}
+              active={tab === "skills"}
+            >
+              {""}
+              Skills{""}
+            </TabButton>
+
+            {/* <TabButton
               selectTab={() => handleTabChange("certifications")}
               active={tab === "certifications"}
             >
               {""}
               Certification{""}
-            </TabButton>
+            </TabButton> */}
           </div>
           <div className="mt-8">
             {TAB_DATA.find((t) => t.id === tab).content}
