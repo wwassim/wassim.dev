@@ -77,7 +77,7 @@ const ProjectsSection = async () => {
           //   animate={isInViw ? "animate" : "initial"}
           //   transition={{ duration: 0.3, delay: i * 0.4 }}
           // >
-          <li>
+          <li key={i}>
             <ProjectCard
               key={i}
               title={project.name}
